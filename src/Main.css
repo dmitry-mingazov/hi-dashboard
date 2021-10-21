@@ -1,0 +1,28 @@
+.mainSidebar {
+    background-color: lightskyblue;
+}
+
+.mainContent {
+    background-color: lightblue;
+    padding: 10px;
+}
+
+.mainFooter {
+    color: white;
+    background-color: purple;
+    padding: 10px;
+    height: 50px;
+}
+
+.mainHeader {
+    color: white;
+    background-color: purple;
+    padding: 10px;
+    height: 50px;
+}
+
+.mainContainer {
+    display: flex;
+    min-height: calc(100vh);
+    flex-direction: column;
+}

@@ -4,6 +4,7 @@ import './Main.css';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import MainGrid from './MainGrid';
+import MainSidenav from './MainSidenav';
 
 const Main = () => (
     <div>
@@ -17,7 +18,7 @@ const Main = () => (
                         Main Content
                         <MainGrid />
                     </Content>
-                    <Sidebar className="mainSidebar">Sidebar</Sidebar>
+                    <MainSidenav className="mainSidebar">Sidebar</MainSidenav>
                 </Container>
                 <Footer className="mainFooter">
                     <h4>Footer</h4>

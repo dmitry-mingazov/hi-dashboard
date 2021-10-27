@@ -1,5 +1,7 @@
 .mainSidebar {
     background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
 }
 
 .mainContent {

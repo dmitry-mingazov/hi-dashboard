@@ -5,10 +5,10 @@ class MainSidenav extends React.Component {
     onSelect(eventKey, event) {
         switch(eventKey) {
             case 'add-widget':
-                console.log('add widget');
+                this.props.onAddWidget();
                 break;
             case 'remove-widget':
-                console.log('remove-widget');
+                this.props.onRemoveWidget();
                 break;
             case 'save-dashboard':
                 console.log('save-dashboard');
@@ -26,7 +26,7 @@ class MainSidenav extends React.Component {
                                 eventKey="3"
                                 title="Actions"
                                 placement="rightStart"
-                                onSelect={this.onSelect}
+                                onSelect={(eventKey, event) => this.onSelect(eventKey, event)}
                                 >
                                 <Dropdown.Item eventKey="add-widget">Add Widget</Dropdown.Item>
                                 <Dropdown.Item eventKey="remove-widget">Remove random</Dropdown.Item>

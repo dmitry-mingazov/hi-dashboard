@@ -6,18 +6,39 @@ import 'react-resizable/css/styles.css';
 import MainGrid from './MainGrid';
 import MainSidenav from './MainSidenav';
 import React from 'react';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            widgets: [
-                {id: 1, x: 0, y: 0, w: 2, h: 2},
-                {id: 2, x: 3, y: 3, w: 2, h: 2},
-                {id: 3, x: 4, y: 5, w: 2, h: 2},
-            ],
-            currId: 4
+
+        if (!process.env.REACT_APP_API_URL) {
+            console.error('Cannot read REACT_APP_API_URL\nPlease provide a valid .env file');
         }
+
+        this.state = {
+            widgets: [],
+            currId: 1
+        }
+    }
+
+
+    componentDidMount() {
+        axios.get(process.env.REACT_APP_API_URL + '/widget').then((response) => {
+            const data = response.data;
+            const widgets = [];
+            let currId = this.state.currId;
+            data.forEach(widget => {
+                widgets.push({
+                    id: currId++,
+                    x: widget.x,
+                    y: widget.y,
+                    h: widget.height,
+                    w: widget.width,
+                });
+            });
+            this.setState({widgets, currId});
+        });
     }
 
     addWidget() {

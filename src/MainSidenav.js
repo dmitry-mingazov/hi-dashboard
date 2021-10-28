@@ -11,6 +11,7 @@ class MainSidenav extends React.Component {
                 this.props.onRemoveWidget();
                 break;
             case 'save-dashboard':
+                this.props.onSaveDashboard();
                 console.log('save-dashboard');
                 break;
         }

@@ -5,8 +5,10 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import MainGrid from './MainGrid';
 import MainSidenav from './MainSidenav';
+import LoginButton from './LoginButton';
 import React from 'react';
 import axios from 'axios';
+import MainHeader from './MainHeader';
 const widgetToDto = (widget) => {
     return {
         id: widget.id,
@@ -100,8 +102,8 @@ class Main extends React.Component {
             <div>
                 <Container className="mainContainer">
                     <Container>
-                        <Header className="mainHeader">
-                            <h4>Hi-Dashboard</h4>
+                        <Header>
+                            <MainHeader />
                         </Header>
                         <Container>
                             <Content className="mainContent">

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import './App.css';
 
 import 'rsuite/dist/rsuite.min.css';
 import Main from './Main';
 
-function App() {
+const App = () => {
   return (
     <Main />
   );

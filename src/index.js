@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CustomContext } from './UserContext';
 import { Auth0Provider } from '@auth0/auth0-react';
 
 ReactDOM.render(
@@ -10,9 +11,12 @@ ReactDOM.render(
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     redirectUri={window.location.origin}
+    audience={process.env.REACT_APP_AUTH0_AUDIENCE}
   >
     <React.StrictMode>
-      <App />
+      <CustomContext>
+        <App />
+      </CustomContext>
     </React.StrictMode>
   </Auth0Provider>,
   document.getElementById('root')

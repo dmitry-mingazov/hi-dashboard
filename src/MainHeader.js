@@ -1,11 +1,11 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Dropdown, Nav, Navbar } from "rsuite";
 import LoginButton from "./LoginButton";
 import LogoutButton from './LogoutButton';
+import { UserContext } from './UserContext';
 
 const MainHeader = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useContext(UserContext);
 
     let AuthButton;
 

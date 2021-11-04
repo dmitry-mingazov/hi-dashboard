@@ -1,5 +1,5 @@
 import { Container, Content, } from 'rsuite';
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { UserContext } from './UserContext';
 import MainGrid from './MainGrid';
@@ -44,13 +44,14 @@ class MainContent extends React.Component {
     }
 
     componentDidMount() {
-        // authentication not implemented yet
-        const USER = 'dmitry-mingazov';
+        // set the author of the dashboard
+        const { user } = this.context;
+        this.setState({author: user.sub});
 
-        axios.get(process.env.REACT_APP_API_URL + '/dashboard/of/' + USER).then((response) => {
+        axios.get(process.env.REACT_APP_API_URL + '/dashboard').then((response) => {
             const dashboards = response.data;
             if (!dashboards.length) {
-                console.log('No dashboards found for ' + USER);
+                console.log(`No dashboards found for ${this.state.author}`);
                 return;
             }
             let currId = this.state.currId;
@@ -82,8 +83,8 @@ class MainContent extends React.Component {
         this.setState({widgets, currId})
     }
 
-      saveDashboard() {
-        const author = 'dmitry-mingazov';
+    saveDashboard() {
+        const author = this.state.author;
         const url = process.env.REACT_APP_API_URL + '/dashboard';
         const updateUrl = url + '/' + this.state.currDashboardId;
         const payload = {author, widgets: this.state.widgets.map(widgetToDto)};
@@ -91,7 +92,7 @@ class MainContent extends React.Component {
         const req = this.state.currDashboardId ? axios.put(updateUrl, updatePayload) : axios.post(url, payload);
         req.then(response => {
                 console.log('Dashboard saved!');
-            })
+            });
     }
 
     render() {
